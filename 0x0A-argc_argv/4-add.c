@@ -1,66 +1,38 @@
-#include <stdlib.h>
 #include <stdio.h>
-#include <string.h>
-
-
-char *number_to_string(int val, int base);
-
+#include <stdlib.h>
 /**
- * main - A program that adds positive numbers
- * @argc: arugment count
- * @argv: argument list
- *
- * Return: Always 0 (Success)
- */
-int main(int argc, char **argv)
+  *main - adds and prints sum of positive numbers
+  *followed by a new line.
+  *@argc: number of arguments passed.
+  *@argv: pointer to array of size argc, containing
+  *arguments passed.
+  *
+  *Return: 0 on success.
+  *1 on error.
+  */
+int main(int argc, char *argv[])
 {
+	int count, count2, sum;
 
-	int sum = 0;
-	int num = 0;
-	char *str = NULL;
+	sum = 0;
 
-	while (argc >= 1)
+	if (argc < 2)
 	{
-		str = argv[argc - 1];
-		num = atoi(str);
-
-		if (num >= 0 && strlen(str) == strlen(number_to_string(num, 10)))
-			sum += num;
-		else
-			break;
-
-		argc--;
+		printf("0\n");
+		return (0);
 	}
-
-
-	if (argc == 1)
-		printf("%d\n", sum);
-	else
+	for (count = 1; count < argc; count++)
 	{
-		printf("Error\n");
-		return (1);
+		for (count2 = 0; argv[count][count2] != '\0'; count2++)
+		{
+			if (argv[count][count2] < '0' || argv[count][count2] > '9')
+			{
+				printf("Error\n");
+				return (1);
+			}
+		}
+		sum += atoi(argv[count]);
 	}
-
+	printf("%d\n", sum);
 	return (0);
-
 }
-
-/**
- * number_to_string - convert int to string
- * @val: An integer
- * @base: An integer
- *
- * Return: A pointer to the buffer
- */
-char *number_to_string(int val, int base)
-{
-	static char buffer[32] = {0};
-
-	int i = 30;
-
-	for (; val && i; --i, val /= base)
-		buffer[i] = "0123456789abcdef"[val % base];
-
-	return (buffer + i + 1);
-}
-
