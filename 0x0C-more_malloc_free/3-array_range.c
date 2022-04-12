@@ -1,29 +1,35 @@
 #include <stdlib.h>
-
 /**
- * array_range - creates an array of integers
- * @min: An integer
- * @max: An integer
- *
- * Return: A pointer to an array of integer
- */
+  *array_range - creates an array of integers.
+  *@min: minimum value.
+  *@max: maximum value.
+  *
+  *Return: pointer to newly created array.
+  *NULL if malloc fails.
+  *NULL if min > max.
+  */
 int *array_range(int min, int max)
 {
-	int *array = NULL;
-	int i = 0, len = 0;
+	int range, i;
+	int *p;
+
+	range = 0;
 
 	if (min > max)
 		return (NULL);
 
-	len = max - min + 1;
+	range = ((max + 1) - min);
 
-	array = malloc(sizeof(*array) * len);
+	p = malloc(range * sizeof(int));
 
-	if (array != NULL)
+	if (p == NULL)
+		return (NULL);
+
+	for (i = 0; i < range; i++)
 	{
-		for (i = 0; i < len; i++)
-			array[i] = min + i;
+		*(p + i) = min + i;
 	}
 
-	return (array);
+	return (p);
 }
+
