@@ -1,3 +1,3 @@
 #!/bin/bash
-gcc -fPIC -c *.c
-gcc -shared -o liball.so *.o
+dir=$(dirname $(realpath $0))
+gcc -Wall -pedantic -Werror -Wextra --shared -o $dir/liball.so $dir/*.c 
