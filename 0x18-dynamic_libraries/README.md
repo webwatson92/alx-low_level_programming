@@ -1,59 +1,52 @@
-# DYNAMIC LIBRARIES
+# C - Dynamic libraries
 
-## *INTRODUCTION*
+In this project, learned about using dynamic libraries in C, including how to create
+them and how to use them with `$LD_LIBRARY_PATH`, `nm`, `ldd`, and `ldconfig`.
 
-Unlike Static Libraries that need to be recompiled whenever there's a change in a certain block of code or function, Dynamic libraries consist of separate files conatining separate pieces of object code. These files are dynamically linked together to form a single piece of object code.
-The Dynamic libraries also contain additional information needed by the operating system in order for the library to be used by other programs.
-As a result, Dynamic libraries conserve memory since only one copy of the library needs to be accessed by all programs.
+## Tests :heavy_check_mark:
 
-## *CREATING A DYNAMIC LIBRARY* (Linux)
+* [tests](./tests): Folder of test files. Provided by Holberton School.
 
-On the Linux terminal start by running the command:
-- $ ``` gcc *.c -c -fPIC ```
-	* This generates on object file .o for each source file .c
-	* *-c* flag ensures that each .o file isn't linked yet.
-	* *-fPIC* flag ensures that the code is position independent meaning it wouldn't matter where the computer loads into memory.
-- $ ``` gcc *.o -shared -o liball.so ```
-	* *.o means all onject files will be compiles into the dynamic library.
-	* *-shared* flag specifies the dynamic library.
-	* By convention shared library names start with *lib* and end with *.so* for dynamic lybraries and *.a* for static libraries.
-- $ ``` export LD_LIBRARY_PATH=$PWD:$LD_LIBRARY_PATH ```
-	* This will export the path for libraries so that programs know where to look for them.
+## Tasks :page_with_curl:
 
-## *USING DYNAMIC LIBRARIES*
+* **0. A library is not a luxury but one of the necessities of life**
+  * [libholberton.so](./libholberton.so): C dynamic library containing all the functions
+  listed below:
+    * `int _putchar(char c);`
+    * `int _islower(int c);`
+    * `int _isalpha(int c);`
+    * `int _abs(int n);`
+    * `int _isupper(int c);`
+    * `int _isdigit(int c);`
+    * `int _strlen(char *s);`
+    * `void _puts(char *s);`
+    * `char *_strcpy(char *dest, char *src);`
+    * `int _atoi(char *s);`
+    * `char *_strcat(char *dest, char *src);`
+    * `char *_strncat(char *dest, char *src, int n);`
+    * `char *_strncpy(char *dest, char *src, int n);`
+    * `int _strcmp(char *s1, char *s2);`
+    * `char *_memset(char *s, char b, unsigned int n);`
+    * `char *_memcpy(char *dest, char *src, unsigned int n);`
+    * `char *_strchr(char *s, char c);`
+    * `unsigned int _strspn(char *s, char *accept);`
+    * `char *_strpbrk(char *s, char *accept);`
+    * `char *_strstr(char *haystack, char *needle);`
 
-In order to use the dynamic library, the following command is used to compile:
-- $ ``` gcc -L <testfile.c> -l<librarname> -o <outputfile> ```.
-	* the -L flag tells the compiler to look in the current directory for the library file.
-	* <testfile.c> should be replaced by the file you wish to compile that uses the shared library.
-	* -l flag tells the compiler to look for a library called *librarname.so* 
-	* <outputfile> is the name of the executable once compilation is done.
+  * [holberton.h](./holberton.h): Header file containing the prototypes of all functions
+  included in `libholberton.so`.
 
+* **1. Without libraries what have we? We have no past and no future**
+  * [1-create_dynamic_lib.sh](./1-create_dynamic_lib.sh): Bash script that creates a
+  dynamic library called `liball.so` from all the `.c` files in the current directory.
 
-## *TASKS*
+* **2. Let's call C functions from Python**
+  * [100-operations.so](./100-operations.so): C dynamic library containing basic C
+  mathematical operation functions that can be called from Python.
+  * Includes:
+    * `int add(int a, int b);`
+    * `int sub(int a, int b);`
+    * `int mul(int a, int b);`
+    * `int div(int a, int b);`
+    * `int mod(int a, int b);`
 
-### linholberton.so
-
-A dynamic library file containing all the functions listed in the header file *holberton.h*.
-
-### 1-create_dynamic_lib.sh
-
-A shell script that creates a dynamic library called *liball.so* from all the *.c* files in the current directory.
-
-### 100-operations.so
-
-A dynamic lirary that contains C functions that can be called from Python.
-
-### 101-make_me_win.sh
-
-A shell script that creates a dynamic library to be used to alter the jackpot [program](https://github.com/holbertonschool/0x18.c).
-Here is some of te documentation:
-``` /* Giga Millions program                                                                                    
-  * Players may pick six numbers from two separate pools of numbers:                                                
-  * - five different numbers from 1 to 75 and                                                                       
-  * - one number from 1 to 15                                                                                       
-  * You win the jackpot by matching all six winning numbers in a drawing.                                           
-  * Your chances to win the jackpot is 1 in 258,890,850                                                             
-  *                                                                                                                 
-  * usage: ./gm n1 n2 n3 n4 n5 bonus ```
- 
