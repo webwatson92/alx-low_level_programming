@@ -65,3 +65,11 @@
     * Does not compile if the header `m.h` is missing.
     * Works even if there are existing files of the same name as any of the
     Makefile rules in the current directory.
+
+## The special variable list
+
+* $@ target name
+* $< first name dependancy
+* $^ dependance list
+* $? dependance list recente that the target
+* $* file name, without its extension
