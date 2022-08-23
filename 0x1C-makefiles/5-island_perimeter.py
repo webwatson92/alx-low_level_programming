@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 """
-Module Island Perimeter for OUATTARA
+Module Island Perimeter
 """
+
 
 def island_perimeter(grid):
     """ Calculate perimeter of grid where "1" is found"""
