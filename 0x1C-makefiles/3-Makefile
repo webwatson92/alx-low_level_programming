@@ -1,4 +1,4 @@
-# Usage: make [all/clean/oclean/fclean] -f [file]
+# How to use: make [all/clean/oclean/fclean] -f [file]
 
 
 CC = gcc
