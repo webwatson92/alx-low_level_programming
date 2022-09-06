@@ -1,7 +1,6 @@
 /*
- * File: 4-hash_table_get.c
- * Auth: Gedeon Obae Gekonge
-*/
+ * Auth: El hadj Youssouf
+ */
 
 #include "hash_tables.h"
 

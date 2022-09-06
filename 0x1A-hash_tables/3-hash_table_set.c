@@ -1,7 +1,6 @@
 /*
- * File: 3-hash_table_set.c
- * Auth: Gedeon Obae Gekonge
-*/
+ * Auth: El hadj Youssouf
+ */
 
 #include "hash_tables.h"
 

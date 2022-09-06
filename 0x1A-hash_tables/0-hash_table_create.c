@@ -1,6 +1,6 @@
 /*
  * File: 0-hash_table_create.c
- * Auth: Gedeon Obae Gekonge
+ * Auth: El hadj Youssouf
  */
 
 #include "hash_tables.h"
